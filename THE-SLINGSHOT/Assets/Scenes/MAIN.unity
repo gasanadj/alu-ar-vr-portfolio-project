@@ -153,6 +153,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1494687797}
+  - {fileID: 971749524}
   m_Father: {fileID: 612835115}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -412,7 +413,6 @@ RectTransform:
   m_Children:
   - {fileID: 1548611650}
   - {fileID: 290458131}
-  - {fileID: 971749524}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -446,17 +446,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971749523}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 986361345}
-  m_Father: {fileID: 612835115}
+  m_Father: {fileID: 290458131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 267.0967}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &971749525
@@ -502,7 +502,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 971749526}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1404535057}
+        m_TargetAssemblyTypeName: GAMEMANAGER, Assembly-CSharp
+        m_MethodName: Update
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &971749526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,70 +687,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986361344}
   m_CullTransparentMesh: 1
---- !u!1 &1010527612
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1010527615}
-  - component: {fileID: 1010527614}
-  - component: {fileID: 1010527613}
-  m_Layer: 0
-  m_Name: AR PLANE MANAGER
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1010527613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010527612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PlanePrefab: {fileID: 0}
-  m_DetectionMode: -1
---- !u!114 &1010527614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010527612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0cb9aa70a22847b5925ee5f067c10a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Camera: {fileID: 0}
-  m_OriginBaseGameObject: {fileID: 1010527612}
-  m_CameraFloorOffsetObject: {fileID: 0}
-  m_RequestedTrackingOriginMode: 0
-  m_CameraYOffset: 1.1176
---- !u!4 &1010527615
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010527612}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1085256020
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,6 +832,8 @@ GameObject:
   - component: {fileID: 1167446573}
   - component: {fileID: 1167446572}
   - component: {fileID: 1167446571}
+  - component: {fileID: 1167446575}
+  - component: {fileID: 1167446574}
   m_Layer: 0
   m_Name: AR Session
   m_TagString: Untagged
@@ -933,6 +883,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1167446574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167446570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PlanePrefab: {fileID: 3396695956695156647, guid: f1171a27f4d93484ca930befe2d6f790,
+    type: 3}
+  m_DetectionMode: -1
+--- !u!114 &1167446575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167446570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0cb9aa70a22847b5925ee5f067c10a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Camera: {fileID: 0}
+  m_OriginBaseGameObject: {fileID: 1167446570}
+  m_CameraFloorOffsetObject: {fileID: 0}
+  m_RequestedTrackingOriginMode: 0
+  m_CameraYOffset: 1.1176
 --- !u!1 &1404535055
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,11 +959,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08c0e09acdbb15d46824e07ad110904d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planeSearchingCanvas: {fileID: 0}
-  targetPrefab: {fileID: 0}
+  planeSearchingCanvas: {fileID: 1548611649}
+  targetPrefab: {fileID: 7756460827004175238, guid: 589ac990b9ade0645802531c4b27d428,
+    type: 3}
   targetsNum: 5
-  selectPlaneCanvas: {fileID: 0}
-  startButton: {fileID: 0}
+  selectPlaneCanvas: {fileID: 290458130}
+  startButton: {fileID: 971749523}
+  ammoPrefab: {fileID: 5716298869491440672, guid: ea960f55ac56e8d45869c7e59b3dfcac,
+    type: 3}
 --- !u!1 &1494687796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1693,7 +1678,6 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 2512387470422636640}
   - {fileID: 1167446573}
-  - {fileID: 1010527615}
   - {fileID: 612835115}
   - {fileID: 2069192558}
   - {fileID: 1404535056}
