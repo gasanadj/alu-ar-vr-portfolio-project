@@ -5,97 +5,144 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARSubsystems;
 
-
 public class GAMEMANAGER : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     public GameObject planeSearchingCanvas;
     public GameObject targetPrefab;
     public int targetsNum = 5;
     public GameObject selectPlaneCanvas;
     public GameObject startButton;
 
-    ARPlane selectedPlane = null;    
+    ARPlane selectedPlane = null;
     ARRaycastManager raycastManager;
     ARPlaneManager planeManager;
-    ARSession session;
 
     List<ARRaycastHit> hits = new List<ARRaycastHit>();
     Dictionary<int, GameObject> targets = new Dictionary<int, GameObject>();
 
+    // Ammo-related variables
+    public GameObject ammoPrefab;
+    private GameObject currentAmmo;
+    private Vector3 ammoStartPos;
+    private bool isDragging = false;
+    private Vector3 dragStartPos;
+
     void Start()
     {
-       raycastManager = FindObjectOfType<ARRaycastManager>();
-       planeManager = FindObjectOfType<ARPlaneManager>();
- 
+        raycastManager = FindObjectOfType<ARRaycastManager>();
+        planeManager = FindObjectOfType<ARPlaneManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Update()
     {
-       if (Input.touchCount > 0 && selectedPlane == null && planeManager.trackables.count >0)
-       {
-        SelectPlane();
-       } 
-    }
-    private void SelectPlane()
-{
-    Touch touch = Input.GetTouch(0);
-    
-
-    if (touch.phase == TouchPhase.Began)
-    {
-        if (raycastManager.Raycast(touch.position, hits, TrackableType.PlaneWithinPolygon))
+        if (Input.touchCount > 0 && selectedPlane == null && planeManager.trackables.count > 0)
         {
-            ARRaycastHit hit = hits[0];
-            selectedPlane =  planeManager.GetPlane(hit.trackableId);
-            // selectedPlane.GetComponent<Renderer>().material.color = new Color(0, 0, 0, 0);
-            selectedPlane.GetComponent<MeshRenderer>().enabled = false;
-            selectedPlane.GetComponent<LineRenderer>().positionCount = 0;
-            selectedPlane.gameObject.layer = LayerMask.NameToLayer("Default");
-            // selectedPlane.GetComponent<Renderer>().sortingOrder = 0;
-            foreach(ARPlane plane in planeManager.trackables)
-            {
-                if (plane != selectedPlane)
-                {
-                    plane.gameObject.SetActive(false);
-                }
-            }
-            planeManager.enabled = false;
-            selectPlaneCanvas.SetActive(false);
-            // OnPlaneSelected?.Invoke(selectedPlane);
+            SelectPlane();
+        }
+
+        if (currentAmmo != null)
+        {
+            HandleAmmoTouch();
         }
     }
-}
-void PlanesFound(ARPlanesChangedEventArgs args)
-{
-    if (selectedPlane == null && planeManager.trackables.count > 0)
+
+    void SelectPlane()
     {
-        planeSearchingCanvas.SetActive(false);
-        selectPlaneCanvas.SetActive(true);
-        planeManager.planesChanged -= PlanesFound;
-    }
-}
+        Touch touch = Input.GetTouch(0);
 
-void PlaneSelected(ARPlane plane)
-{
-    foreach (KeyValuePair<int, GameObject> target in targets)
+        if (touch.phase == TouchPhase.Began)
+        {
+            if (raycastManager.Raycast(touch.position, hits, TrackableType.PlaneWithinPolygon))
+            {
+                ARRaycastHit hit = hits[0];
+                selectedPlane = planeManager.GetPlane(hit.trackableId);
+
+                // Hide other planes
+                foreach (ARPlane plane in planeManager.trackables)
+                {
+                    if (plane != selectedPlane)
+                    {
+                        plane.gameObject.SetActive(false);
+                    }
+                }
+
+                planeManager.enabled = false;
+                selectPlaneCanvas.SetActive(false);
+
+                PlaneSelected(selectedPlane);
+            }
+        }
+    }
+
+    void PlaneSelected(ARPlane plane)
     {
-        Destroy(target.Value);
-    }
-    targets.Clear();
+        // Clear any existing targets
+        foreach (KeyValuePair<int, GameObject> target in targets)
+        {
+            Destroy(target.Value);
+        }
+        targets.Clear();
 
-    startButton.SetActive(true);
-    for (int i = 1; i <= targetsNum; i++)
+        startButton.SetActive(true);
+
+        // Spawn targets
+        for (int i = 1; i <= targetsNum; i++)
+        {
+            GameObject target = Instantiate(targetPrefab, plane.center, plane.transform.rotation, plane.transform);
+            target.GetComponent<MoveRandomly>().StartMoving(plane);
+            targets.Add(i, target);
+        }
+
+        // Spawn ammo after selecting the plane
+        SpawnAmmo();
+    }
+
+    public void SpawnAmmo()
     {
-        GameObject target = Instantiate(targetPrefab, plane.center, plane.transform.rotation, plane.transform);
-        // target.GetComponent<MoveRandomly>().StartMoving(plane);
-        //target.GetComponent<Target>().ID = i;
-       // target.GetComponent<Target>().OnTargetDestroy += UpdateGameWhenHitTarget;
-        targets.Add(i, target);
+        if (currentAmmo != null)
+        {
+            Destroy(currentAmmo);
+        }
+
+        Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+        if (raycastManager.Raycast(screenCenter, hits, TrackableType.PlaneWithinPolygon))
+        {
+            ARRaycastHit hit = hits[0];
+            ammoStartPos = hit.pose.position;
+            currentAmmo = Instantiate(ammoPrefab, ammoStartPos, Quaternion.identity);
+        }
     }
-}
 
+    private void HandleAmmoTouch()
+    {
+        if (Input.touchCount == 0) return;
 
+        Touch touch = Input.GetTouch(0);
+
+        if (touch.phase == TouchPhase.Began)
+        {
+            isDragging = true;
+            dragStartPos = touch.position;
+        }
+        else if (touch.phase == TouchPhase.Moved && isDragging)
+        {
+
+        }
+        else if (touch.phase == TouchPhase.Ended && isDragging)
+        {
+            Vector3 dragEndPos = touch.position;
+            Vector3 dragDirection = (dragStartPos - dragEndPos).normalized;
+            float dragDistance = Vector3.Distance(dragStartPos, dragEndPos);
+            float launchForce = dragDistance * 0.05f;
+
+            Rigidbody rb = currentAmmo.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.isKinematic = false;
+                rb.AddForce(dragDirection * launchForce, ForceMode.Impulse);
+            }
+
+            isDragging = false;
+        }
+    }
 }
