@@ -1,0 +1,2 @@
+C:\Users\musev\Downloads\unity-ar_slingshot_game-main\unity-ar_slingshot_game-main\Silly Shot\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Users\musev\Downloads\unity-ar_slingshot_game-main\unity-ar_slingshot_game-main\Silly Shot\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt
