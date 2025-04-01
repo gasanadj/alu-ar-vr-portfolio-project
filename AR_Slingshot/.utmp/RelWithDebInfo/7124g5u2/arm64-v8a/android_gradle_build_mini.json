@@ -1,0 +1,28 @@
+{
+  "buildFiles": [
+    "C:\\Users\\musev\\Downloads\\unity-ar_slingshot_game-main\\unity-ar_slingshot_game-main\\AR_Slingshot\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\unityLibrary\\src\\main\\cpp\\CMakeLists.txt",
+    "C:\\Users\\musev\\Downloads\\unity-ar_slingshot_game-main\\unity-ar_slingshot_game-main\\AR_Slingshot\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\unityLibrary\\src\\main\\cpp\\GameActivity\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "C:\\Program Files\\Unity\\Hub\\Editor\\6000.0.34f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "C:\\Users\\musev\\Downloads\\unity-ar_slingshot_game-main\\unity-ar_slingshot_game-main\\AR_Slingshot\\.utmp\\RelWithDebInfo\\7124g5u2\\arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "C:\\Program Files\\Unity\\Hub\\Editor\\6000.0.34f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "C:\\Users\\musev\\Downloads\\unity-ar_slingshot_game-main\\unity-ar_slingshot_game-main\\AR_Slingshot\\.utmp\\RelWithDebInfo\\7124g5u2\\arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "game::@d02bb112ea9f9c2ed29f": {
+      "artifactName": "game",
+      "abi": "arm64-v8a",
+      "output": "C:\\Users\\musev\\Downloads\\unity-ar_slingshot_game-main\\unity-ar_slingshot_game-main\\AR_Slingshot\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\unityLibrary\\build\\intermediates\\cxx\\RelWithDebInfo\\7124g5u2\\obj\\arm64-v8a\\libgame.so",
+      "runtimeFiles": []
+    }
+  }
+}

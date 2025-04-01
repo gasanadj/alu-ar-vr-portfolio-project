@@ -1,0 +1,17 @@
+C:\Users\musev\Downloads\unity-ar_slingshot_game-main\unity-ar_slingshot_game-main\AR_Slingshot\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\GAToUnityCallbacks.h
+C:\Users\musev\Downloads\unity-ar_slingshot_game-main\unity-ar_slingshot_game-main\AR_Slingshot\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\MacroEnd.h
+C:\Users\musev\Downloads\unity-ar_slingshot_game-main\unity-ar_slingshot_game-main\AR_Slingshot\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\MacroHeaderBegin.h
+C:\Users\musev\Downloads\unity-ar_slingshot_game-main\unity-ar_slingshot_game-main\AR_Slingshot\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\MacroSourceBegin.h
+C:\Users\musev\Downloads\unity-ar_slingshot_game-main\unity-ar_slingshot_game-main\AR_Slingshot\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAApplication.h
+C:\Users\musev\Downloads\unity-ar_slingshot_game-main\unity-ar_slingshot_game-main\AR_Slingshot\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAConfiguration.h
+C:\Users\musev\Downloads\unity-ar_slingshot_game-main\unity-ar_slingshot_game-main\AR_Slingshot\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGADebug.h
+C:\Users\musev\Downloads\unity-ar_slingshot_game-main\unity-ar_slingshot_game-main\AR_Slingshot\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAEvents.h
+C:\Users\musev\Downloads\unity-ar_slingshot_game-main\unity-ar_slingshot_game-main\AR_Slingshot\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAInput.h
+C:\Users\musev\Downloads\unity-ar_slingshot_game-main\unity-ar_slingshot_game-main\AR_Slingshot\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGASoftKeyboard.h
+C:\Users\musev\Downloads\unity-ar_slingshot_game-main\unity-ar_slingshot_game-main\AR_Slingshot\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGASoftKeyboardCallbacks.h
+C:\Users\musev\Downloads\unity-ar_slingshot_game-main\unity-ar_slingshot_game-main\AR_Slingshot\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGATypes.h
+C:\Users\musev\Downloads\unity-ar_slingshot_game-main\unity-ar_slingshot_game-main\AR_Slingshot\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAVersion.h
+C:\Users\musev\Downloads\unity-ar_slingshot_game-main\unity-ar_slingshot_game-main\AR_Slingshot\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UnityToGACallbacks.h
+C:\Users\musev\Downloads\unity-ar_slingshot_game-main\unity-ar_slingshot_game-main\AR_Slingshot\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UnityToGAConfigurationCallbacks.h
+C:\Users\musev\Downloads\unity-ar_slingshot_game-main\unity-ar_slingshot_game-main\AR_Slingshot\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UnityToGAKeyEventCallbacks.h
+C:\Users\musev\Downloads\unity-ar_slingshot_game-main\unity-ar_slingshot_game-main\AR_Slingshot\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UnityToGAMotionEventCallbacks.h
