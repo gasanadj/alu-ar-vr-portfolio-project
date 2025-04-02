@@ -3,15 +3,15 @@ using UnityEngine;
 
 namespace ARSlingshotGame
 {
-    // Launcher/slingshot system that replaces the original SlingShot class
     public class ProjectileLauncher : MonoBehaviour
     {
         [SerializeField] private GameObject projectilePrefab;
         [SerializeField] private int forceMultiplier = 750;
         [SerializeField] private int forceScalar = 3;
         [SerializeField] private float reloadDelay = 1.5f;
-        
+
         private GameObject loadedProjectile;
+        private Projectile projectileComponent;
         private int ammoRemaining;
         private bool isDragging;
         private float dragDepth;
@@ -31,6 +31,7 @@ namespace ARSlingshotGame
             {
                 Destroy(loadedProjectile);
                 loadedProjectile = null;
+                projectileComponent = null;
             }
             ammoRemaining = 0;
             isDragging = false;
@@ -42,15 +43,17 @@ namespace ARSlingshotGame
             {
                 // Create new projectile
                 loadedProjectile = Instantiate(projectilePrefab, transform.position, transform.rotation, transform);
-                
+
                 // Setup physics
                 var rb = loadedProjectile.GetComponent<Rigidbody>();
                 rb.isKinematic = true;
-                
+
+                // Get projectile component reference
+                projectileComponent = loadedProjectile.GetComponent<Projectile>();
+
                 // Register for hit events
-                var projectile = loadedProjectile.GetComponent<Projectile>();
-                projectile.OnHit += HandleProjectileHit;
-                
+                projectileComponent.OnHit += HandleProjectileHit;
+
                 // Update ammo count
                 ammoRemaining--;
                 GameEvents.AmmoUpdated(ammoRemaining);
@@ -77,16 +80,19 @@ namespace ARSlingshotGame
             {
                 TryGrabProjectile();
             }
-            
+
             if (isDragging)
             {
                 // Update projectile position based on drag
                 loadedProjectile.transform.position = GetDragPoint() + dragOffset;
-                
+
                 // Aim projectile in launch direction
                 loadedProjectile.transform.forward = GetLaunchDirection().normalized;
+
+                // Update trajectory visualization
+                UpdateTrajectory();
             }
-            
+
             if (Input.GetMouseButtonUp(0) && isDragging)
             {
                 LaunchProjectile();
@@ -98,7 +104,7 @@ namespace ARSlingshotGame
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            
+
             if (Physics.Raycast(ray, out hit))
             {
                 if (hit.transform.gameObject == loadedProjectile)
@@ -123,10 +129,23 @@ namespace ARSlingshotGame
         {
             // Calculate launch force based on pull distance
             Vector3 force = (transform.position - loadedProjectile.transform.position) * forceMultiplier;
-            
+
             // Add forward component for trajectory
             force = ((transform.forward * force.magnitude * forceScalar) + force);
             return force;
+        }
+
+        // Update the trajectory line
+        private void UpdateTrajectory()
+        {
+            if (projectileComponent != null)
+            {
+                // Calculate launch velocity based on the force we'd apply
+                Vector3 launchVelocity = GetLaunchDirection() / loadedProjectile.GetComponent<Rigidbody>().mass;
+
+                // Update the trajectory visualization
+                projectileComponent.ShowTrajectory(launchVelocity, loadedProjectile.transform.position);
+            }
         }
 
         private void LaunchProjectile()
@@ -135,17 +154,17 @@ namespace ARSlingshotGame
             {
                 // Detach from parent
                 loadedProjectile.transform.parent = null;
-                
+
                 // Enable physics and apply launch force
                 Rigidbody rb = loadedProjectile.GetComponent<Rigidbody>();
                 rb.isKinematic = false;
                 rb.AddForce(GetLaunchDirection());
-                
+
                 // Initialize projectile state
-                Projectile projectile = loadedProjectile.GetComponent<Projectile>();
-                projectile.Launch(loadedProjectile.transform.position);
-                
+                projectileComponent.Launch(loadedProjectile.transform.position);
+
                 loadedProjectile = null;
+                projectileComponent = null;
             }
         }
     }
