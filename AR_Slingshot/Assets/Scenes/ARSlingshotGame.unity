@@ -312,6 +312,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 531
       objectReference: {fileID: 0}
+    - target: {fileID: 1465504680938423080, guid: 489256bb69ac2444e994e4e77fc77243,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1810859809091325793, guid: 489256bb69ac2444e994e4e77fc77243,
         type: 3}
       propertyPath: m_IsActive
@@ -675,7 +680,7 @@ PrefabInstance:
     - target: {fileID: 5620779503447974590, guid: 489256bb69ac2444e994e4e77fc77243,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RestartGame
+      value: PlayAgain
       objectReference: {fileID: 0}
     - target: {fileID: 5620779503447974590, guid: 489256bb69ac2444e994e4e77fc77243,
         type: 3}

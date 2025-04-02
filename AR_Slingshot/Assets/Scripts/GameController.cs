@@ -25,6 +25,7 @@ namespace ARSlingshotGame
         [SerializeField] private GameObject ammoUIContainer;
         [SerializeField] private GameObject replayButton;
         [SerializeField] private Text scoreText;
+        [SerializeField] private GameObject restartButton;
 
         // Game state
         private int currentScore;
@@ -217,12 +218,53 @@ namespace ARSlingshotGame
             replayButton.SetActive(true);
         }
         
-        // Option 1: Reload the entire scene to restart AR plane detection
         public void RestartGame()
         {
             ResetGame(); // Call the ResetGame method instead
         }
-        
+
+        public void PlayAgain()
+        {
+            // Hide end game buttons
+            replayButton.SetActive(false);
+            if (restartButton != null)
+            {
+                restartButton.SetActive(false);
+            }
+
+            // Clear any remaining enemies
+            foreach (var enemy in activeEnemies.Values)
+            {
+                Destroy(enemy);
+            }
+            activeEnemies.Clear();
+
+            // Respawn enemies on the same plane
+            SpawnEnemies(selectedPlane);
+
+            // Reset score
+            currentScore = 0;
+            scoreText.text = "0";
+
+            // Reset and refill ammo
+            launcher.InitializeAmmo(ammoCount);
+
+            // Recreate ammo UI
+            foreach (Transform child in ammoUIContainer.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            for (int i = 0; i < ammoCount; i++)
+            {
+                GameObject ammo = Instantiate(ammoImagePrefab);
+                ammo.transform.SetParent(ammoUIContainer.transform, false);
+            }
+
+            // Make sure game UI is active
+            gameUIPanel.SetActive(true);
+        }
+
         public void ExitGame()
         {
             Application.Quit();
