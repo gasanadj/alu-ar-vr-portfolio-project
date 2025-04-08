@@ -1,0 +1,2 @@
+/Users/maicoltd/Desktop/unity-ar_slingshot_game/AR_Slingshot/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/CMakeLists.txt
+/Users/maicoltd/Desktop/unity-ar_slingshot_game/AR_Slingshot/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/CMakeLists.txt

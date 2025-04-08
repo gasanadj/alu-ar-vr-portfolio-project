@@ -140,7 +140,7 @@ namespace ARSlingshotGame
         {
             if (projectileComponent != null)
             {
-                // Calculate launch velocity based on the force we'd apply
+                // Calculate launch velocity based on the force
                 Vector3 launchVelocity = GetLaunchDirection() / loadedProjectile.GetComponent<Rigidbody>().mass;
 
                 // Update the trajectory visualization
